@@ -1,92 +1,37 @@
-# Implementação de Classes com Dicionários
+## pyoop
 
-Este repositório contém um estudo sobre a implementação interna de classes em orientação a objetos usando dicionários em Python. O objetivo é demonstrar como funções e dados podem ser encapsulados em estruturas de dicionários para simular o comportamento de objetos e classes.
+Este projeto simula o comportamento da Orientação a Objetos (OO) sem utilizar os recursos de OO da linguagem Python. O objetivo é demonstrar como a OO funciona internamente.
 
-## Arquivos
+###  Simulando Classes e Herança
 
-O repositório contém os seguintes arquivos:
+Em vez de classes tradicionais, usamos dicionários para representar objetos e funções para simular métodos. A herança é implementada através de dicionários aninhados, onde cada "classe" filha referencia sua "classe" pai.
 
-- `shapes_dict.py`
-- `shapes_class.py`
+###  Funções Principais
 
-### shapes_dict.py
+* `shape_density(thing, weight)`: Calcula a densidade dividindo o peso pela área do objeto.
+* `shape_new(name)`: Cria um novo objeto do tipo `Shape` básico.
+* `call(thing, method_name, *args)`: Procura e executa o método `method_name` no objeto `thing`, passando argumentos adicionais (*args).
+* `find(cls, method_name)`: Procura recursivamente o método `method_name` na hierarquia de classes, começando pela "classe" (`cls`) informada.
+* `make(cls, *args)`: Cria um novo objeto chamando a função `_new` da "classe" (`cls`), passando argumentos adicionais (*args).
 
-Este arquivo contém uma implementação simples de um "objeto" quadrado usando dicionários. As funções de perímetro e área são definidas separadamente e associadas ao dicionário que representa o quadrado.
+###  Classes Simuladas
 
-#### Funções
+* `Shape`: Classe base para todas as formas. Define métodos para densidade genérica.
+* `Square`: Classe filha de `Shape` representando um quadrado. Define métodos para perimetro, área e comparação de tamanho.
+* `Circle`: Classe filha de `Shape` representando um círculo. Define métodos para perimetro, área e comparação de tamanho.
 
-- `square_perimeter(thing)`: Calcula o perímetro de um quadrado.
-- `square_area(thing)`: Calcula a área de um quadrado.
-- `square_new(name, side)`: Cria uma nova instância de um quadrado.
-- `call(thing, method_name)`: Chama um método associado ao "objeto" quadrado.
+###  Exemplo de Uso
 
-#### Exemplo de Uso
+O script cria instâncias de quadrado e círculo, calcula a densidade e imprime o resultado.
 
-```python
-examples = [square_new('sq', 3)]
 
-for ex in examples:
-    n = ex['name']
-    p = call(ex, 'perimeter')
-    a = call(ex, 'area')
-    print(f'{n} {p:.2f} {a:.2f}')
-```
+###  Executando o Código
 
-### shapes_class.py
+1. Clone o repositório: `git clone https://github.com/tiagomend/pyoop.git`
+2. Navegue para a pasta do projeto: `cd pyoop`
+3. Execute o script: `python main.py` (ou o nome do arquivo principal)
 
-Este arquivo refina a abordagem anterior ao introduzir uma estrutura de classe simulada. As funções de perímetro e área são agrupadas em um dicionário que representa a classe.
 
-#### Funções
+###  Contribuindo
 
-- `square_perimeter(thing)`: Calcula o perímetro de um quadrado.
-- `square_area(thing)`: Calcula a área de um quadrado.
-- `Square`: Dicionário que representa a "classe" quadrado.
-- `square_new(name, side)`: Cria uma nova instância de um quadrado associada à "classe".
-- `call(thing, method_name)`: Chama um método associado ao "objeto" quadrado.
-
-#### Exemplo de Uso
-
-```python
-examples = [square_new('sq', 3)]
-
-for ex in examples:
-    n = ex['name']
-    p = call(ex, 'perimeter')
-    a = call(ex, 'area')
-    c = ex['_class']['_classname']
-    print(f'{n} is a {c}: {p:.2f} {a:.2f}')
-```
-
-## Como Usar
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/shapes-study.git
-   cd shapes-study
-   ```
-
-2. Execute os scripts:
-   ```bash
-   python shapes_dict.py
-   python shapes_class.py
-   ```
-
-## Explicação
-
-O estudo compara duas abordagens para implementar classes e objetos:
-
-1. **shapes_dict.py**: Utiliza um dicionário simples para representar um objeto. As funções de método são separadas e referenciadas no dicionário do objeto.
-
-2. **shapes_class.py**: Introduz um nível adicional de abstração ao criar uma estrutura de classe com métodos encapsulados. As instâncias do objeto referenciam a "classe" para acessar seus métodos.
-
-## Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
-
----
-
-Esse README fornece uma visão geral clara dos arquivos e funcionalidades do projeto, além de instruções sobre como usá-lo e contribuir.
+Sinta-se livre para fazer fork e contribuir com o projeto! Melhore a documentação, implemente novas formas ou explore outros conceitos de OO sem utilizar funcionalidades nativas da linguagem.
